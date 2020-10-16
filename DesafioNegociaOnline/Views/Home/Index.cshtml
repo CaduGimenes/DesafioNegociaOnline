@@ -1,0 +1,46 @@
+﻿@model DesafioNegociaOnline.Models.Address
+@{
+    ViewData["Title"] = "Início";
+}
+
+<div class="text-center border mt-3">
+    <form method="post" class="m-4">
+        <div class="form-group row">
+            <label for="cep" class="col-sm-2 col-form-label">CEP</label>
+            <div class="col-sm-3">
+                <input type="text" name="cep" class="form-control" id="cep" maxlength="8" required>
+            </div>
+        </div>
+        <div class="col-12 d-flex flex-row">
+            <div class="d-flex flex-column col-6">
+                <button type="submit" class="btn btn-primary" asp-controller="Home" asp-action="QueryWs">Botão consulta WS</button>
+                <button type="submit" class="btn btn-secondary mt-1" asp-controller="Home" asp-action="InsertDb">Botão insere DB</button>
+                <button type="submit" class="btn btn-success mt-1" asp-controller="Home" asp-action="QueryDb">Botão consulta DB</button>
+            </div>
+            <div class="col-6">
+                @{
+                    if (ViewData["ErrorMessage"] != null)
+                    {
+                        <label class="error">@ViewData["ErrorMessage"]</label>
+                    }
+
+                    if(ViewData["Origin"] != null)
+                    {
+                        <p>Origem: @ViewData["Origin"]</p>
+                        <p>CEP: @Model.Cep</p>
+                        <p>Logradouro: @Model.Logradouro</p>
+                        <p>Complemento: @Model.Complemento</p>
+                        <p>Bairro: @Model.Bairro</p>
+                        <p>Localidade: @Model.Localidade</p>
+                        <p>UF: @Model.Uf</p>
+                        <p>IBGE: @Model.Ibge</p>
+                        <p>GIA: @Model.Gia</p>
+                        <p>DDD: @Model.Ddd</p>
+                        <p>SIAFI: @Model.Siafi</p>
+                    }
+
+                }
+            </div>
+        </div>
+    </form>
+</div>
